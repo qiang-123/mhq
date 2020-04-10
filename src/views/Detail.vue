@@ -1,0 +1,35 @@
+<template>
+    <div class="detail">
+        <div>详情页</div>
+        <div></div>
+        <div></div>
+    </div>
+</template>
+<script>
+export default {
+    data(){
+        return{
+            list:[
+                {
+                    id:1,
+                    name:'',
+                    score:5,
+                    rank:'9.9',
+                    tag:[],
+                    actor:[],
+                    text:''
+                },
+                {
+                    id:2,
+                    name:'',
+                    score:5,
+                    rank:'9.9',
+                    tag:[],
+                    actor:[],
+                    text:''
+                }
+            ]
+        }
+    }
+}
+</script>

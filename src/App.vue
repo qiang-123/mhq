@@ -1,0 +1,66 @@
+<template>
+  <div id="app">
+    <nut-navbar 
+      style="background-color:rgb(59, 79, 231); color: #fff; height:60px; line-height: 60px;"
+      :leftShow="showBack" 
+      :rightShow="false"
+      @on-click-back="backHandle"
+      >
+      {{pageName}}
+    </nut-navbar>
+    <router-view/>
+  </div>
+</template>
+<script>
+export default {
+  data(){
+    return {
+      showBack:false,
+      pageName:'主页',
+      route:[
+        { name:'主页', routeName:'Home', flag:false },
+        { name:'详情页', routeName:'Detail', flag:true },
+        { name:'订单', routeName:'Order', flag:false },
+        { name:'个人中心', routeName:'User', flag:false },
+      ]
+    }
+  },
+  watch:{
+    '$route'(newVal){
+      console.log(newVal)
+      for(const item of this.route){
+        if(item.routeName == newVal.name){
+          this.pageName = item.name
+          if(item.flag) this.showBack = true
+          else this.showBack = false
+          break
+        }
+      }
+    }
+  },
+  methods:{
+    backHandle(){
+      this.$router.push('/')
+    }
+  }
+}
+</script>
+<style lang="scss">
+*{
+  margin: 0;
+  padding: 0;
+}
+html,body{
+  height:100% ;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+ 
+}
+</style>
