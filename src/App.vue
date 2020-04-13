@@ -22,6 +22,10 @@ export default {
         { name:'详情页', routeName:'Detail', flag:true },
         { name:'订单', routeName:'Order', flag:false },
         { name:'个人中心', routeName:'User', flag:false },
+        { name:'影院', routeName:'Theater', flag:true },
+        { name:'选座', routeName:'Seats', flag:true },
+        { name:'注册', routeName:'Register', flag:true },
+
       ]
     }
   },
