@@ -5,7 +5,7 @@
                 <span class="leftSpan">{{item.name}}</span>
                 <span class="rightSpan">></span>
             </div>
-            <nut-button block>点击退出</nut-button>
+            <nut-button block @click='clickHandle'>点击退出</nut-button>
         </div>
         <Footer />
     </div>
@@ -41,6 +41,11 @@ export default {
     },
     components:{
         Footer
+    },
+    methods:{
+        clickHandle(){
+            this.$router.push('/login')
+        }
     }
 }
 </script>

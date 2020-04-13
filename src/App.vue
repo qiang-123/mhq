@@ -5,6 +5,7 @@
       :leftShow="showBack" 
       :rightShow="false"
       @on-click-back="backHandle"
+      v-if='showHead'
       >
       {{pageName}}
     </nut-navbar>
@@ -16,6 +17,7 @@ export default {
   data(){
     return {
       showBack:false,
+      showHead:true,
       pageName:'主页',
       route:[
         { name:'主页', routeName:'Home', flag:false },
@@ -32,6 +34,11 @@ export default {
   watch:{
     '$route'(newVal){
       console.log(newVal)
+      
+      if(newVal.name == 'Login') this.showHead = false
+      else this.showHead = true
+
+
       for(const item of this.route){
         if(item.routeName == newVal.name){
           this.pageName = item.name
