@@ -1,7 +1,7 @@
 <template>
   <div class="home">
+      <div class="homeTitle">影片</div>
       <div class="warpper">
-        <div class="homeTitle">影片</div>
         <div class="cardItem" v-for="item in list" :key='item.id'>
           <nut-row>
             <nut-col :span="8">
@@ -19,7 +19,7 @@
                   </div>
                   <div class="movTag">{{item.tag.join('、')}}</div>
                   <div class="movAtr">{{item.actor.join(',')}}</div>
-                  <nut-button small @click="clickHandle">购票</nut-button>
+                  <nut-button small @click="clickHandle(item.id)">购票</nut-button>
                 </div>
             </nut-col>
         </nut-row>
@@ -45,7 +45,34 @@ export default {
           sen:'IMAX',
           tag:['剧情','爱情','战争'],
           actor:['黄轩','苗苗'] 
-        }
+        },
+        {
+          id:2,
+          name:'芳华华',
+          rank:'8.9分',
+          mov:'2D',
+          sen:'IMAX',
+          tag:['剧情','爱情','战争'],
+          actor:['黄轩','苗苗'] 
+        },
+        {
+          id:3,
+          name:'芳芳华',
+          rank:'7.9分',
+          mov:'2D',
+          sen:'IMAX',
+          tag:['剧情','爱情','战争'],
+          actor:['黄轩','苗苗'] 
+        },
+        {
+          id:4,
+          name:'芳华芳华',
+          rank:'6.9分',
+          mov:'2D',
+          sen:'IMAX',
+          tag:['剧情','爱情','战争'],
+          actor:['黄轩','苗苗'] 
+        },
       ]
     }
   },
@@ -53,26 +80,47 @@ export default {
     Footer
   },
   methods:{
-    clickHandle(){
-      this.$router.push('/detail')
+    clickHandle(id){
+      console.log(id)
+      // this.$router.push('/detail')
+      // 路由传参
+      // 明文传参
+      // 1.直接拼接
+      // this.$router.push(`/detail?id=${id}`)
+      // 2.使用query传参
+      // this.$router.push({
+      //   path:'/detail',
+      //   query:{
+      //     id:id
+      //   }
+      // })
+      // 非明文传参
+      this.$router.push({
+        name:'Detail',
+        params:{
+          id:id
+        }
+      })
     }
   }
 }
 </script>
 <style lang="scss" scoped>
 .home{
-  height: 100%;
+  height: 100% - 60;
+  flex:1;
   display: flex;
   flex-direction: column;
-  .warpper{
-    flex: 1;
-    overflow-y: auto;
-    .homeTitle{
+  .homeTitle{
       height: 44px;
       line-height: 44px;
       background: #fff;
       color: rgb(59, 79, 231);
-    }
+  }
+  .warpper{
+    flex: 1;
+    overflow-y: auto;
+    
     .cardItem{
       background: lightgray;
       .imgWarp,.msg{

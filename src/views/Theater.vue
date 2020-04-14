@@ -43,8 +43,13 @@ export default {
     },
     methods:{
         clickHandle(id){
-            this.$router.push('/Seats')
+            this.$router.push('/seats')
         }
+    },
+    mounted(){
+        const data = this.$route.params
+        this.name = data.name
+        this.rank = data.rank
     }
 }
 </script>
